@@ -138,7 +138,7 @@ for contigLengthk in ['0.15', '0.3', '0.5', '1'] :
 # clean the output file
 outfile = os.path.join(output_dir, os.path.basename(input_fa)+'_gt'+str(cutoff_len)+'bp_dvfpred.txt')
 predF = open(outfile, 'w')
-writef = predF.write('\t'.join(['name', 'sample_len', 'contig_len', 'score', 'pvalue'])+'\n')
+writef = predF.write('\t'.join(['name', 'sample_len', 'model_contig_len', 'score', 'pvalue'])+'\n')
 predF.close()
 predF = open(outfile, 'a')
 #flushf = predF.flush()
