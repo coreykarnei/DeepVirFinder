@@ -2,3 +2,5 @@ train_example/*
 test/*
 .DS_Store
 data/contigs/*
+data/genomes/h_human-x.fasta
+data/genomes/h_human-y.fasta
