@@ -4,3 +4,4 @@ test/*
 data/contigs/*
 data/genomes/h_human-x.fasta
 data/genomes/h_human-y.fasta
+data/genomes/h_human-3.fasta
