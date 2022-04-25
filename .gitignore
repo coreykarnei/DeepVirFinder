@@ -1,2 +1,4 @@
 train_example/*
 test/*
+.DS_Store
+data/contigs/*
