@@ -91,24 +91,17 @@ def pred(ID) :
     #print('predicting '+head)
     seqL = len(codefw)
     
-    if seqL < 300 :
-      model = modDict['0.15']
-      null = nullDict['0.15']
-    elif seqL < 500 and seqL >= 300 :
-      model = modDict['0.3']
-      null = nullDict['0.3']
-    elif seqL < 1000 and seqL >= 500 :
-      model = modDict['0.5']
-      null = nullDict['0.5']
-    else :
-      model = modDict['1']
-      null = nullDict['1']
+    sequence_lengths = ['0.15', '0.3', '0.5', '1']
+
+    for seq_len in sequence_lengths:
+        model = modDict[seq_len]
+        null = nullDict[seq_len]
     
-    score = model.predict([np.array([codefw]), np.array([codebw])], batch_size=1)
-    pvalue = sum([x>score for x in null])/len(null)
+        score = model.predict([np.array([codefw]), np.array([codebw])], batch_size=1)
+        pvalue = sum([x>score for x in null])/len(null)
     
-    writef = predF.write('\t'.join([head, str(seqL), str(float(score)), str(float(pvalue))])+'\n')
-    flushf = predF.flush()
+        writef = predF.write('\t'.join([head.replace(" ", ""), str(seqL), str(int(float(seq_len)*1000)), str(float(score)), str(float(pvalue))])+'\n')
+        flushf = predF.flush()
     
     return [head, float(score), float(pvalue)]
 
@@ -145,7 +138,7 @@ for contigLengthk in ['0.15', '0.3', '0.5', '1'] :
 # clean the output file
 outfile = os.path.join(output_dir, os.path.basename(input_fa)+'_gt'+str(cutoff_len)+'bp_dvfpred.txt')
 predF = open(outfile, 'w')
-writef = predF.write('\t'.join(['name', 'len', 'score', 'pvalue'])+'\n')
+writef = predF.write('\t'.join(['name', 'sample_len', 'model_contig_len', 'score', 'pvalue'])+'\n')
 predF.close()
 predF = open(outfile, 'a')
 #flushf = predF.flush()
