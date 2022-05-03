@@ -1,4 +1,12 @@
-# DeepVirFinder: Identifying viruses from metagenomic data by deep learning
+# DeepVirFinder Evaluation
+## ECE 381V Term Project
+Contributors: Corey Karnei and Jackson Lightfoot
+
+This repository contributes python notebook scripts for sampling genomes from .fasta files and evaluating prediction scores outputted by DeepVirFinder.
+It also includes a shell script to run DeepVirFinder on folders containing .fasta files.
+Lastly, it includes figures and results from our own experiments.
+
+# DeepVirFinder: Identifying viruses from metagenomic data by deep learning (original readme)
 
 Version: 1.0
 
